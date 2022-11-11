@@ -19,7 +19,10 @@ function galleryTemplate(galleryItems) {
 
 galleryBox.innerHTML = galleryTemplate(galleryItems);
 
-const simpleLightbox = new SimpleLightbox("ul.gallery a", {
+const imgRef = galleryBox.querySelectorAll(".gallery__item");
+imgRef.forEach(ref => (ref.style.boxShadow = "none"));
+
+new SimpleLightbox("ul.gallery a", {
 	captionsData: "alt",
 	captionsDelay: 250,
 });
