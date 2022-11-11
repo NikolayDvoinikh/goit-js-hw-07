@@ -1,11 +1,25 @@
 import { galleryItems } from "./gallery-items.js";
 // Change code below this line
 
-console.log(galleryItems);
-import * as basicLightbox from "basiclightbox";
+const galleryBox = document.querySelector("ul.gallery");
 
-const instance = basicLightbox.create(`
-    <img src="assets/images/image.png" width="800" height="600">
-`);
+function galleryTemplate(galleryItems) {
+	return galleryItems
+		.map(({ preview, original, description }) => {
+			return `
+            <li>
+                <a class="gallery__item" href="${original}">
+                    <img class="gallery__image" src="${preview}" alt="${description}" />
+                </a>
+            </li>
+            `;
+		})
+		.join("");
+}
 
-instance.show();
+galleryBox.innerHTML = galleryTemplate(galleryItems);
+
+const simpleLightbox = new SimpleLightbox("ul.gallery a", {
+	captionsData: "alt",
+	captionsDelay: 250,
+});
