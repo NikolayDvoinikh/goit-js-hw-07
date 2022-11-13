@@ -37,9 +37,12 @@ function onGalleryContainerClick(e) {
                     />`);
 	instance.show();
 
-	galleryContainer.addEventListener("keydown", e => {
+	galleryContainer.addEventListener("keydown", onEscPress);
+
+	function onEscPress(e) {
 		if (e.code === "Escape") {
 			instance.close();
+			galleryContainer.removeEventListener("keydown", onEscPress);
 		}
-	});
+	}
 }
