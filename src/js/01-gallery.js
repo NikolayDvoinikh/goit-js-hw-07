@@ -40,7 +40,7 @@ function onGalleryContainerClick(e) {
 	galleryContainer.addEventListener("keydown", onEscPress);
 
 	function onEscPress(e) {
-		if (e.code === "Escape") {
+		if (e.code === "Escape" && instance.show) {
 			instance.close();
 			galleryContainer.removeEventListener("keydown", onEscPress);
 		}
